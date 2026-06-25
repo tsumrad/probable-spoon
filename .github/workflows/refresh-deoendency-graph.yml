@@ -7,7 +7,11 @@ on:
 
 permissions:
     contents: write
-
+    pull-requests: write
+    issues: write
+    security-events: read
+    vulnerability-alerts: read
+    
 jobs:
   refresh:
     uses: tsumrad/shared-gha-tools/.github/workflows/dependency-graph-refresh.yml@sbom-generation
