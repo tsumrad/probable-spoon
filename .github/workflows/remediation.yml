@@ -17,4 +17,4 @@ permissions:
 
 jobs:
   remediation:
-    uses: tsumrad/shared-gha-tools/.github/workflows/security-vulnerability-remediation.yml@main
+    uses: tsumrad/shared-gha-tools/.github/workflows/security-vulnerability-remediation.yml@agent-remediation
