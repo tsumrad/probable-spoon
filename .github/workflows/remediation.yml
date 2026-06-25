@@ -1,0 +1,21 @@
+name: Security Vulnerability Remediation
+ 
+ on:
+   workflow_dispatch:
+     inputs:
+       dry_run:
+         description: Analyze only without creating PRs/issues
+         required: false
+         default: true
+         type: boolean
+ 
+ permissions:
+   contents: write
+   pull-requests: write
+   issues: write
+   security-events: write
+   vulnerability-alerts: read
+ 
+ jobs:
+   remediation:
+     uses: tsumrad/shared-gha-tools/.github/workflows/security-vulnerability-remediation.yml@main
