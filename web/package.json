@@ -11,10 +11,18 @@
     "test": "jest"
   },
   "resolutions": {
-    "normalize-url": "^4.5.1",
-    "css-what": "^6.1.0",
-    "trim-newlines": "^3.0.1",
-    "glob-parent": ">=5.1.2"
+    "normalize-url": "4.5.1",
+    "css-what": "6.1.0",
+    "trim-newlines": "3.0.1",
+    "glob-parent": "5.1.2",
+    "loader-utils": "2.0.4"
+  },
+  "overrides": {
+    "normalize-url": "4.5.1",
+    "css-what": "6.1.0",
+    "trim-newlines": "3.0.1",
+    "glob-parent": "5.1.2",
+    "loader-utils": "2.0.4"
   },
   "dependencies": {
     "@bcgov/bootstrap-theme": "https://github.com/bcgov/bootstrap-theme/releases/download/v1.1.3/bcgov-bootstrap-theme-1.1.3.tgz",
@@ -32,7 +40,7 @@
     "popper.js": "^1.16.1",
     "save": "^2.4.0",
     "showdown": "~2.1.0",
-    "ts-loader": "^6.2.2",
+    "ts-loader": "^9.2.5",
     "underscore": "^1.13.8",
     "vue": "^3.5.38",
     "vue-axios": "^3.4.1",
@@ -59,7 +67,7 @@
     "@vue/cli-plugin-eslint": "^5.0.9",
     "@vue/cli-plugin-router": "^5.0.9",
     "@vue/cli-plugin-typescript": "^5.0.9",
-    "@vue/cli-plugin-vuex": "^4.5.19",
+    "@vue/cli-plugin-vuex": "^5.0.9",
     "@vue/cli-service": "^5.0.9",
     "@vue/eslint-config-typescript": "^5.1.0",
     "deepmerge": "^4.2.2",
@@ -71,7 +79,7 @@
     "sass-loader": "^10.5.2",
     "ts-jest": "^29.4.6",
     "typescript": "4.3.5",
-    "vue-cli-plugin-vuetify": "~2.0.9",
+    "vue-cli-plugin-vuetify": "~2.5.8",
     "vue-template-compiler": "^2.7.8"
   }
 }
