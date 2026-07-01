@@ -1,0 +1,17 @@
+# medium Severity (non-breaking) — Security Remediation Plan
+
+- **js-yaml** (transitive via @vue/cli-plugin-typescript@4.5.19, @vue/cli-service@4.5.19, eslint@6.8.0, jest@30.3.0, @istanbuljs/load-nyc-config@1.1.0): < 3.15.0 → >=3.15.0 (GHSA-h67p-54hq-rp68, GHSA-mh29-5h37-fv8m)
+- **http-proxy-middleware** (transitive via @vue/cli-service@4.5.19): >= 0.16.0, < 2.0.10 → >=2.0.10 (GHSA-64mm-vxmg-q3vj, GHSA-4www-5p9h-95mh)
+- **webpack-dev-server** (transitive via @vue/cli-service@4.5.19, @vue/cli-service@5.0.9): < 5.2.5 → >=5.2.5 (GHSA-mx8g-39q3-5c79, GHSA-79cf-xcqc-c78w, GHSA-9jgg-88mc-972h, GHSA-4v9v-hfq4-rm2v)
+- **qs** (transitive via @vue/cli-plugin-babel@4.5.19, @vue/cli-plugin-eslint@4.5.19, @vue/cli-plugin-typescript@4.5.19, @vue/cli-service@4.5.19): >= 6.11.1, <= 6.15.1 → >=6.15.2 (GHSA-q8mj-m7cp-5q26, GHSA-w7fw-mjwx-w883, GHSA-6rw7-vpxm-498p)
+- **uuid** (transitive via @vue/cli-service@4.5.19, @vue/cli-plugin-babel@4.5.19, @vue/cli-plugin-eslint@4.5.19, @vue/cli-plugin-router@4.5.19, @vue/cli-plugin-typescript@4.5.19, node-sass@7.0.3, sockjs@0.3.24): < 11.1.1 → >=11.1.1 (GHSA-w5hq-g745-h8pq)
+- **ip-address** (transitive via node-sass@7.0.3): <= 10.1.0 → >=10.1.1 (GHSA-v2v4-37r5-5v8g)
+- **postcss** (transitive via @vue/cli-plugin-babel@4.5.19, vue-fontawesome-icon@1.3.0, vue-fontawesome@0.0.2, vue@2.7.16, @vue/cli-service@4.5.19, @vue/component-compiler-utils@3.3.0): < 8.5.10 → >=8.5.10 (GHSA-qx2v-qp2m-jg93, GHSA-7fh5-64p2-3v2j)
+- **follow-redirects** (transitive via @vue/cli-service@4.5.19, axios@0.28.1): <= 1.15.11 → >=1.16.0 (GHSA-r4q5-vmmm-2653)
+- **brace-expansion** (transitive via @typescript-eslint/eslint-plugin@2.34.0, @typescript-eslint/parser@2.34.0, @vue/cli-plugin-babel@4.5.19, @vue/cli-plugin-eslint@4.5.19, @vue/cli-plugin-typescript@4.5.19, @vue/cli-service@4.5.19, eslint@6.8.0, jest@30.3.0, node-sass@7.0.3, vue-cli-plugin-vuetify@2.0.9, minimatch@3.0.4): < 1.1.13 → >=1.1.13 (GHSA-f886-m6hf-6m8v, GHSA-v6h2-p8h4-qcjw)
+- **ajv** (transitive via @vue/cli-plugin-babel@4.5.19, @vue/cli-plugin-eslint@4.5.19, @vue/cli-plugin-router@4.5.19, @vue/cli-plugin-typescript@4.5.19, @vue/cli-service@4.5.19, eslint@6.8.0, node-sass@7.0.3, raw-loader@4.0.2, sass-loader@10.5.2, vue-cli-plugin-vuetify@2.0.9): < 6.14.0 → >=6.14.0 (GHSA-2g4f-4pwh-qvx6)
+- **nanoid** (transitive via @vue/cli-plugin-babel@4.5.19, vue-fontawesome-icon@1.3.0, vue-fontawesome@0.0.2, vue@2.7.16): < 3.3.8 → >=3.3.8 (GHSA-mwcw-c2x4-8c55)
+- **micromatch** (transitive via @vue/cli-plugin-babel@4.5.19, @vue/cli-plugin-eslint@4.5.19, @vue/cli-plugin-typescript@4.5.19, @vue/cli-service@4.5.19, ts-loader@6.2.2, anymatch@2.0.0, readdirp@2.2.1, webpack@4.47.0): < 4.0.8 → >=4.0.8 (GHSA-952p-6rrq-rcjv)
+- **tough-cookie** (transitive via @vue/cli-plugin-babel@4.5.19, @vue/cli-plugin-eslint@4.5.19, @vue/cli-plugin-router@4.5.19, @vue/cli-plugin-typescript@4.5.19, @vue/cli-service@4.5.19, node-sass@7.0.3): < 4.1.3 → >=4.1.3 (GHSA-72xf-g2v4-qvf3)
+- **moment-timezone** (direct): >= 0.1.0, < 0.5.35 → >=0.5.35 (GHSA-56x4-j7p9-fcf9, GHSA-v78c-4p63-2j6c)
+- **got** (transitive via vue-resource@1.5.3): < 11.8.5 → >=11.8.5 (GHSA-pfrx-2q88-qq97)
