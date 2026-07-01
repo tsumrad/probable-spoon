@@ -12,14 +12,14 @@
   },
   "resolutions": {
     "normalize-url": "4.5.1",
-    "css-what": "6.1.0",
+    "css-what": "8.0.0",
     "trim-newlines": "3.0.1",
     "glob-parent": "5.1.2",
     "loader-utils": "2.0.4"
   },
   "overrides": {
     "normalize-url": "4.5.1",
-    "css-what": "6.1.0",
+    "css-what": "8.0.0",
     "trim-newlines": "3.0.1",
     "glob-parent": "5.1.2",
     "loader-utils": "2.0.4"
