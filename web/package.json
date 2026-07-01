@@ -15,6 +15,19 @@
     "css-what": "6.1.0",
     "trim-newlines": "3.0.1",
     "glob-parent": "5.1.2",
+    "loader-utils": "2.0.4",
+    "http-cache-semantics": "4.1.1",
+    "minimatch": "3.1.5",
+    "picomatch": "2.3.2",
+    "serialize-javascript": "7.0.5",
+    "shelljs": "0.8.5"
+  },
+  "overrides": {
+    "normalize-url": "4.5.1",
+    "css-what": "6.1.0",
+    "trim-newlines": "3.0.1",
+    "glob-parent": "5.1.2",
+    "loader-utils": "2.0.4",
     "http-cache-semantics": "4.1.1",
     "minimatch": "3.1.5",
     "picomatch": "2.3.2",
@@ -62,7 +75,7 @@
     "@vue/cli-plugin-eslint": "^5.0.9",
     "@vue/cli-plugin-router": "^5.0.9",
     "@vue/cli-plugin-typescript": "^5.0.9",
-    "@vue/cli-plugin-vuex": "^4.5.19",
+    "@vue/cli-plugin-vuex": "^5.0.9",
     "@vue/cli-service": "^5.0.9",
     "@vue/eslint-config-typescript": "^5.1.0",
     "deepmerge": "^4.2.2",
@@ -74,7 +87,7 @@
     "sass-loader": "^10.5.2",
     "ts-jest": "^29.4.6",
     "typescript": "4.3.5",
-    "vue-cli-plugin-vuetify": "~2.0.9",
+    "vue-cli-plugin-vuetify": "~2.5.8",
     "vue-template-compiler": "^2.7.8"
   }
 }
