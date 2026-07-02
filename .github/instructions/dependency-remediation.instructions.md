@@ -42,3 +42,5 @@ Provide a summary including:
 - Files changed
 - Direct dependency changes (old → new)
 - Transitive dependency versions fixed
+- Remediation strategy per vulnerability (direct upgrade vs override)
+- Rationale for each override-based fix
