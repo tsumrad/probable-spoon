@@ -19,26 +19,11 @@ permissions:
   security-events: write
 
 jobs:
-  osv-scan:
-    runs-on: ubuntu-latest
-
-    steps:
-      - uses: actions/checkout@v4
-
-      - name: Install OSV-Scanner
-        uses: google/osv-scanner-action/setup-osv-scanner@v2
-
-      - name: Run OSV-Scanner
-        run: |
-          osv-scanner scan \
-            -r \
-            --skip-git \
-            --format sarif \
-            --output osv-results.sarif \
-            . || true
-
-      - name: Upload SARIF
-        uses: github/codeql-action/upload-sarif@v3
-        if: always()
-        with:
-          sarif_file: osv-results.sarif
+  scan-scheduled:
+    uses: google/osv-scanner-action/.github/workflows/osv-scanner-reusable.yml@v2.3.8
+    with:
+      fail-on-vuln: false
+      scan-args: |-
+        -r
+        --skip-git
+        ./
