@@ -1,8 +1,7 @@
 import os
-from pydantic import BaseSettings
 
 
-class Settings(BaseSettings):
+class Settings:
 
     DATABASE_SERVICE_NAME = os.getenv('DATABASE_SERVICE_NAME','db')
     DATABASE_ENGINE = os.getenv('DATABASE_ENGINE','postgresql')
@@ -68,9 +67,6 @@ class Settings(BaseSettings):
     EMAIL_SERVICE_CLIENT_SECRET = os.getenv('EMAIL_SERVICE_CLIENT_SECRET')
     RECIPIENT_EMAILS = os.getenv('RECIPIENT_EMAILS') 
     ADM_PRODUCTION_ENV = os.getenv('ADM_PRODUCTION_ENV','false')
-
-    class Config:
-        case_sensitive = True
 
 
 settings = Settings()

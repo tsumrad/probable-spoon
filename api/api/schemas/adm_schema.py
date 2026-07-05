@@ -1,15 +1,14 @@
 from typing import Optional
-from pydantic import BaseModel
+from pydantic import BaseModel, ConfigDict
 
 
     
 class PdfSchema(BaseModel):
     
-    html: Optional[str]
-    booking_id: Optional[int]
-    body: Optional[str]
-    to: Optional[str]
-    title: Optional[str]
+    html: Optional[str] = None
+    booking_id: Optional[int] = None
+    body: Optional[str] = None
+    to: Optional[str] = None
+    title: Optional[str] = None
     
-    class Config():
-        orm_mode = True
+    model_config = ConfigDict(from_attributes=True)

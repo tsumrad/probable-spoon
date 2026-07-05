@@ -1,4 +1,4 @@
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, ConfigDict, Field
 from datetime import datetime
 from typing import Optional
 
@@ -7,20 +7,18 @@ class LocationSchema(BaseModel):
     id: int    
     name: str
     location_code: str = Field(alias="locationCode")
-    address_line1: Optional[str] = Field(alias="addressLine1")
+    address_line1: Optional[str] = Field(None, alias="addressLine1")
     address_line2: Optional[str] = Field("", alias="addressLine2")
     city: str
-    postal_code: Optional[str] = Field(alias="postalCode")
+    postal_code: Optional[str] = Field(None, alias="postalCode")
     created_at: datetime = Field(alias="createdAt")  
     updated_at: datetime = Field(alias="updatedAt")
     short_description: str = Field(alias="shortDescription")        
-    latitude: Optional[float]
-    longitude: Optional[float]
-    timezone: Optional[str] = Field()
+    latitude: Optional[float] = None
+    longitude: Optional[float] = None
+    timezone: Optional[str] = Field(None, )
     
-    class Config():
-        orm_mode = True
-        allow_population_by_field_name = True
+    model_config = ConfigDict(from_attributes=True, populate_by_name=True)
 
 class LocationShortSchema(BaseModel):    
 
@@ -28,11 +26,9 @@ class LocationShortSchema(BaseModel):
     name: str
     location_code: str = Field(alias="locationCode")    
     short_description: str = Field(alias="shortDescription")
-    timezone: Optional[str] = Field()
+    timezone: Optional[str] = Field(None, )
     
-    class Config():
-        orm_mode = True
-        allow_population_by_field_name = True
+    model_config = ConfigDict(from_attributes=True, populate_by_name=True)
 
 
 class CourtDistanceSchema(BaseModel):
@@ -53,6 +49,4 @@ class CourtDistanceSchema(BaseModel):
     # interpreter_latitude: Optional[float] = Field("", alias="interpreterLatitude")
     # interpreter_longitude: Optional[float] = Field("", alias="interpreterLongitude")
        
-    class Config():
-        orm_mode = True
-        allow_population_by_field_name = True
+    model_config = ConfigDict(from_attributes=True, populate_by_name=True)

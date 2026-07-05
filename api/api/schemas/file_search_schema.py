@@ -1,6 +1,6 @@
 from typing import Optional, List, Dict
 from enum import Enum
-from pydantic import BaseModel, validator
+from pydantic import BaseModel, ConfigDict, ValidationInfo, field_validator
 
 class CourtLevel(str, Enum):
     P = "Provincial"
@@ -78,31 +78,29 @@ class FileSearchQueryParams(BaseModel):
     mdocJustinNoSet: Optional[str] = None
     physicalFileIdSet: Optional[str] = None
 
-    @validator('courtClassCd', 'courtLevelCd', pre=True, allow_reuse=True)
-    def validate_enum(cls, v, field):
+    @field_validator('courtClassCd', 'courtLevelCd', mode='before')
+    @classmethod
+    def validate_enum(cls, v, info: ValidationInfo):
         if v is None or v == "":
             return v 
         try:
             if isinstance(v, str):
-                if field.name == 'courtClassCd':
+                if info.field_name == 'courtClassCd':
                     return CourtClass.from_display_name(v) or v
-                if field.name == 'courtLevelCd':
+                if info.field_name == 'courtLevelCd':
                     return CourtLevel.from_display_name(v) or v
             return v
         except (ValueError, TypeError):
             return v
 
-    class Config:
-        orm_mode = True
+    model_config = ConfigDict(from_attributes=True)
 
 class FileSearchRequestSchema(BaseModel):
-    query: Optional[FileSearchQueryParams]
-    location_id: Optional[int]
-    date_range: Optional[Dict[str, str]]
+    query: Optional[FileSearchQueryParams] = None
+    location_id: Optional[int] = None
+    date_range: Optional[Dict[str, str]] = None
     is_criminal: bool = False
-    class Config:
-        orm_mode = True
-        use_enum_values = True
+    model_config = ConfigDict(from_attributes=True, use_enum_values=True)
 
 class FileDetail(BaseModel):
     mdocJustinNo: Optional[str] = None
@@ -128,18 +126,16 @@ class FileSearchResponseSchema(BaseModel):
     recCount: Optional[str] = None
     fileDetail: List[FileDetail]
 
-    class Config:
-        orm_mode = True
+    model_config = ConfigDict(from_attributes=True)
 class AppearanceDetailQueryParams(BaseModel):
     futureYN: Optional[str] = None
 
 class AppearanceDetailRequestSchema(BaseModel):
-    query: Optional[AppearanceDetailQueryParams]
+    query: Optional[AppearanceDetailQueryParams] = None
     # mdocJustinNo for criminal, physicalFileId for civil
     file_id: Optional[str] = None
     is_criminal: bool = False
-    class Config:
-        orm_mode = True
+    model_config = ConfigDict(from_attributes=True)
 
 class AppearanceDetail(BaseModel):
     historyYN: Optional[str] = None
@@ -167,8 +163,7 @@ class AppearanceDetail(BaseModel):
     securityRestrictionTxt: Optional[str] = None
     outOfTownJudgeTxt: Optional[str] = None
 
-    class Config:
-        orm_mode = True
+    model_config = ConfigDict(from_attributes=True)
 
 class AppearanceDetailResponseSchema(BaseModel):
     responseCd: Optional[str] = None
@@ -177,5 +172,4 @@ class AppearanceDetailResponseSchema(BaseModel):
     historyRecCount: Optional[str] = None
     apprDetail: List[AppearanceDetail]
 
-    class Config:
-        orm_mode = True
+    model_config = ConfigDict(from_attributes=True)
