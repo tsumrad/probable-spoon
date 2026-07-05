@@ -1,6 +1,6 @@
 import datetime
 from typing import Optional
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, ConfigDict, Field
 from typing import List
 
 class RoleSchema(BaseModel):
@@ -8,8 +8,7 @@ class RoleSchema(BaseModel):
     id: int    
     role_name: str
     
-    class Config():
-        orm_mode = True
+    model_config = ConfigDict(from_attributes=True)
 
 
 class RoleSchemaRequest(BaseModel):

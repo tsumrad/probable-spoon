@@ -1,6 +1,6 @@
 from datetime import datetime
-from typing import Optional, List
-from pydantic import BaseModel, Field
+from typing import ClassVar, Optional, List
+from pydantic import BaseModel, ConfigDict, Field
 
 from api.schemas.language_schema import InterpreterLanguageSchema
 from api.schemas.custom_type import JsonBase
@@ -11,22 +11,22 @@ from api.schemas.location_schema import CourtDistanceSchema
 #__________________________________________
 class InterpreterBase(BaseModel):
 
-    last_name: Optional[str] = Field(alias="lastName")
-    first_name: Optional[str] = Field(alias="firstName")
+    last_name: Optional[str] = Field(None, alias="lastName")
+    first_name: Optional[str] = Field(None, alias="firstName")
 
-    address: Optional[str]
-    city: Optional[str]
+    address: Optional[str] = None
+    city: Optional[str] = None
     province: Optional[str] = "BC"
-    postal_code: Optional[str] = Field(alias="postal")
+    postal_code: Optional[str] = Field(None, alias="postal")
     
-    home_phone: Optional[str] = Field(alias="homePhone")
-    business_phone: Optional[str] = Field(alias="businessPhone")
-    cell_phone: Optional[str] = Field(alias="phone")
+    home_phone: Optional[str] = Field(None, alias="homePhone")
+    business_phone: Optional[str] = Field(None, alias="businessPhone")
+    cell_phone: Optional[str] = Field(None, alias="phone")
     fax: Optional[str] = None    
     email: Optional[str] =''
 
-    supplier_no: Optional[str] = Field(alias="supplier")
-    gst_no: Optional[str] = Field(alias="gst")
+    supplier_no: Optional[str] = Field(None, alias="supplier")
+    gst_no: Optional[str] = Field(None, alias="gst")
     site_code: Optional[str] = Field(default=None, alias="siteCode")
     
     contract_valid: Optional[bool] = Field(None, alias="contractExtension")
@@ -35,14 +35,12 @@ class InterpreterBase(BaseModel):
 
     comments: Optional[str] = None
     
-    class Config():
-        orm_mode = True
-        allow_population_by_field_name = True
+    model_config = ConfigDict(from_attributes=True, populate_by_name=True)
 #__________________________________________
 #__________________________________________
 
 class InterpreterCreateModifyRequestSchema(InterpreterBase):
-    crc_check_date: Optional[datetime] = Field(alias="criminalRecordCheckDate")
+    crc_check_date: Optional[datetime] = Field(None, alias="criminalRecordCheckDate")
     completed_training: Optional[bool] = False
     admin_comment: Optional[str] = Field("", alias="adminComments")
     crc_comment: Optional[str] = Field(None, alias="criminalRecordCheck")
@@ -54,7 +52,7 @@ class InterpreterGetAdminResponseSchema(InterpreterCreateModifyRequestSchema):
     id: int     
     events: Optional[List] = []
     booking: Optional[List] = []
-    created_at: Optional[datetime]
+    created_at: Optional[datetime] = None
 
 
 
@@ -64,55 +62,49 @@ class InterpreterGetAdminResponseSchema(InterpreterCreateModifyRequestSchema):
 
 
 class InterpreterBookingResponseSchema(BaseModel):
-    id: Optional[int] 
-    last_name: Optional[str] = Field(alias="lastName")
-    first_name: Optional[str] = Field(alias="firstName")
-    cell_phone: Optional[str] = Field(alias="phone")
-    email: Optional[str]
+    id: Optional[int]  = None
+    last_name: Optional[str] = Field(None, alias="lastName")
+    first_name: Optional[str] = Field(None, alias="firstName")
+    cell_phone: Optional[str] = Field(None, alias="phone")
+    email: Optional[str] = None
     languages: Optional[List[InterpreterLanguageSchema]] = []
-    language_history: Optional[JsonBase] = Field(alias="languageHistory")
-    courts: Optional[List[CourtDistanceSchema]]
-    address: Optional[str]
-    city: Optional[str]
+    language_history: Optional[JsonBase] = Field(None, alias="languageHistory")
+    courts: Optional[List[CourtDistanceSchema]] = None
+    address: Optional[str] = None
+    city: Optional[str] = None
     province: Optional[str] = "BC"
-    postal_code: Optional[str] = Field(alias="postal")
+    postal_code: Optional[str] = Field(None, alias="postal")
 
-    class Config():
-        orm_mode = True
-        allow_population_by_field_name = True
+    model_config = ConfigDict(from_attributes=True, populate_by_name=True)
 
 
 class InterpreterADMBookingResponseSchema(InterpreterBookingResponseSchema):
-    supplier_no: Optional[str] = Field(alias="supplier")
-    gst_no: Optional[str] = Field(alias="gst")
-    site_code: Optional[str] = Field(alias="siteCode")
-    address_longitude : Optional[float] = Field(alias="addressLongitude")
-    address_latitude : Optional[float] = Field(alias="addressLatitude")
+    supplier_no: Optional[str] = Field(None, alias="supplier")
+    gst_no: Optional[str] = Field(None, alias="gst")
+    site_code: Optional[str] = Field(None, alias="siteCode")
+    address_longitude : Optional[float] = Field(None, alias="addressLongitude")
+    address_latitude : Optional[float] = Field(None, alias="addressLatitude")
 
 
 class InterpreterGeoStatusSchema(BaseModel):
     id: int
-    update_started = False
-    last_name: Optional[str] = Field(alias="lastName")
-    first_name: Optional[str] = Field(alias="firstName")
+    update_started: ClassVar[bool] = False
+    last_name: Optional[str] = Field(None, alias="lastName")
+    first_name: Optional[str] = Field(None, alias="firstName")
 
-    address: Optional[str]
-    city: Optional[str]
+    address: Optional[str] = None
+    city: Optional[str] = None
     province: Optional[str] = "BC"
-    postal_code: Optional[str] = Field(alias="postal")
+    postal_code: Optional[str] = Field(None, alias="postal")
 
-    updated_at: Optional[datetime]
+    updated_at: Optional[datetime] = None
     contract_valid: Optional[bool] = Field(None, alias="contractExtension")
-    geo_service: Optional[str]
+    geo_service: Optional[str] = None
 
-    class Config():
-        orm_mode = True
-        allow_population_by_field_name = True
+    model_config = ConfigDict(from_attributes=True, populate_by_name=True)
 
 class InterpreterBookingResponseShortSchema(BaseModel):
-    id: Optional[int] 
-    last_name: Optional[str] = Field(alias="lastName")
-    first_name: Optional[str] = Field(alias="firstName")
-    class Config():
-        orm_mode = True
-        allow_population_by_field_name = True
+    id: Optional[int]  = None
+    last_name: Optional[str] = Field(None, alias="lastName")
+    first_name: Optional[str] = Field(None, alias="firstName")
+    model_config = ConfigDict(from_attributes=True, populate_by_name=True)

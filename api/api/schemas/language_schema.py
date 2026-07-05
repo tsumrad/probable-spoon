@@ -1,6 +1,6 @@
 
 from typing import Optional
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, ConfigDict, Field
 
 
 class LanguageSchemaRequest(BaseModel):
@@ -13,8 +13,7 @@ class LanguageSchema(BaseModel):
     id: int
     name: str   
     
-    class Config():
-        orm_mode = True
+    model_config = ConfigDict(from_attributes=True)
 
 
 class InterpreterLanguageSchema(BaseModel):
@@ -24,6 +23,4 @@ class InterpreterLanguageSchema(BaseModel):
     language: str = Field(alias="languageName")
     comment_on_level: Optional[str] = Field("", alias="commentOnLevel")
        
-    class Config():
-        orm_mode = True
-        allow_population_by_field_name = True
+    model_config = ConfigDict(from_attributes=True, populate_by_name=True)

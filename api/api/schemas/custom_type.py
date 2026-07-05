@@ -16,7 +16,7 @@ class TruncatedUserIdBase(str):
             return value.split('_____')[0]
 
     @classmethod
-    def validate(cls, v):
+    def validate(cls, v, info=None):
         if not isinstance(v, str):
             raise TypeError('string required')
         if not v:
@@ -39,7 +39,7 @@ class JsonBase(str):
         return json.loads(value)
 
     @classmethod
-    def validate(cls, v):
+    def validate(cls, v, info=None):
         if not isinstance(v, str):
             raise TypeError('string required')
         # if not v:

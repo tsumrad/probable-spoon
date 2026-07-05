@@ -9,31 +9,31 @@ from api.schemas.booking_schema import BookingSearchResponseSchema
 
 
 class DatesSchema(BaseModel):
-    arrivalTime: Optional[str]
-    date: Optional[datetime]
-    period: Optional[str]
+    arrivalTime: Optional[str] = None
+    date: Optional[datetime] = None
+    period: Optional[str] = None
 
 
 class CrcDateRangeSchema(BaseModel):
-    endDate: Optional[str]
-    startDate: Optional[str]
+    endDate: Optional[str] = None
+    startDate: Optional[str] = None
 
 class BaseInterpreterSearchSchema(BaseModel):    
-    languageId:  Optional[int]
-    level: Optional[List[str]]
-    city: Optional[str]
-    dates: Optional[List[DatesSchema]]
-    name: Optional[str]
-    keywords: Optional[str]
-    active: Optional[bool]
-    criminalRecordCheck: Optional[CrcDateRangeSchema]
-    courtAddr: Optional[str]
-    distanceLimit: Optional[bool]
-    location: Optional[LocationSchema]
+    languageId:  Optional[int] = None
+    level: Optional[List[str]] = None
+    city: Optional[str] = None
+    dates: Optional[List[DatesSchema]] = None
+    name: Optional[str] = None
+    keywords: Optional[str] = None
+    active: Optional[bool] = None
+    criminalRecordCheck: Optional[CrcDateRangeSchema] = None
+    courtAddr: Optional[str] = None
+    distanceLimit: Optional[bool] = None
+    location: Optional[LocationSchema] = None
 
 class InterpreterSearchRequestSchema(BaseInterpreterSearchSchema):    
-    limit: Optional[int]
-    page: Optional[int]
+    limit: Optional[int] = None
+    page: Optional[int] = None
     # sort: Optional[str]
 
 
@@ -42,9 +42,9 @@ class InterpreterSearchResponseSchema(InterpreterBase):
     id: int     
     events: Optional[List] = []
     booking: Optional[List[BookingSearchResponseSchema]] = []
-    created_at: Optional[datetime]
-    court: Optional[CourtDistanceSchema]
-    court_distance: Optional[int] = Field(alias="courtDistance")    
+    created_at: Optional[datetime] = None
+    court: Optional[CourtDistanceSchema] = None
+    court_distance: Optional[int] = Field(None, alias="courtDistance")    
 
 
 class InterpreterDataInExcelRequestSchema(BaseInterpreterSearchSchema):
