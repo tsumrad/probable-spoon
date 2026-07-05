@@ -16,7 +16,7 @@ class LocationSchema(BaseModel):
     short_description: str = Field(alias="shortDescription")        
     latitude: Optional[float] = None
     longitude: Optional[float] = None
-    timezone: Optional[str] = Field(None, )
+    timezone: Optional[str] = None
     
     model_config = ConfigDict(from_attributes=True, populate_by_name=True)
 
@@ -26,7 +26,7 @@ class LocationShortSchema(BaseModel):
     name: str
     location_code: str = Field(alias="locationCode")    
     short_description: str = Field(alias="shortDescription")
-    timezone: Optional[str] = Field(None, )
+    timezone: Optional[str] = None
     
     model_config = ConfigDict(from_attributes=True, populate_by_name=True)
 

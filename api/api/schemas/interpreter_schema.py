@@ -1,5 +1,5 @@
 from datetime import datetime
-from typing import Optional, List
+from typing import ClassVar, Optional, List
 from pydantic import BaseModel, ConfigDict, Field
 
 from api.schemas.language_schema import InterpreterLanguageSchema
@@ -88,7 +88,7 @@ class InterpreterADMBookingResponseSchema(InterpreterBookingResponseSchema):
 
 class InterpreterGeoStatusSchema(BaseModel):
     id: int
-    update_started: bool = False
+    update_started: ClassVar[bool] = False
     last_name: Optional[str] = Field(None, alias="lastName")
     first_name: Optional[str] = Field(None, alias="firstName")
 
